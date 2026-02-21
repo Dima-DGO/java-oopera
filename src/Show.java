@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Show {
+class Show {
     String title;   //Название
     int duration;   //длительность
 
@@ -15,20 +15,12 @@ public class Show {
         this.director = director;
     }
 
-    // Добавляем актера с проверкой наличия его в списке уже добавленных актеров
+    // Добавляем актера в список если его нет в списке
     public void setActor(Actor actor) {
-        if (!listOfActors.isEmpty()) {
-            for (Actor act : listOfActors) {
-                if (act.name.equals(actor.name) && act.surname.equals(actor.surname) &&
-                        act.height == (actor.height)) {
-                    System.out.println("Актер " + actor.surname + " уже есть в списке.");
-                    return;
-                }
-            }
+        if (!listOfActors.contains(actor)) {
             listOfActors.add(actor);
-
         } else {
-            listOfActors.add(actor);
+            System.out.println("Такой актер уже есть в списке");
         }
     }
 
@@ -39,19 +31,27 @@ public class Show {
         }
     }
 
+    // Распечатываем режиссера
+    public void printDirector() {
+        System.out.println(director); // toString() переопределен в классе Director и Person
+    }
+
     // Меняем актера. nameActor - это фамилия актера которого меняем на другого актера
     public void changeActor(Actor actor, String nameActor) {
-        int i = -1;
-        for (Actor act : listOfActors) {
-            i++;
-            if (act.surname.equals(nameActor)) {
-                System.out.println("Меняем актера " + nameActor + " на актера " + actor.surname + ".");
-                listOfActors.remove(i);
-                setActor(actor); // Сразу идет проверка актера на то, есть ли он уже в списке
-                return;
+        int j = 0;
+        int index = 0;
+        for (int i = 0; i < listOfActors.size(); i++) {
+            if (listOfActors.get(i).getSurname().equals(nameActor)) {
+                j++;
+                index = i;
             }
-
         }
-        System.out.println("Замена невозможна. Актер " + nameActor + " в списке не найден.");
+        if (j == 1) {
+            listOfActors.set(index, actor);
+        } else if (j == 0) {
+            System.out.println("Замена актера не возможна. Такого актера не существует");
+        } else if (j > 1) {
+            System.out.println("Замена актера не возможна. Актеров с такой фамилией больше одного в списке");
+        }
     }
 }

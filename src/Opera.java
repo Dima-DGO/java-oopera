@@ -1,4 +1,4 @@
-public class Opera extends MusicalShow {
+class Opera extends MusicalShow {
     int choirSize;  // количество человек в опере
 
     public Opera(String title, int duration, Director director, Person musicAuthor,

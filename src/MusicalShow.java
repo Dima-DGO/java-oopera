@@ -1,4 +1,4 @@
-public class MusicalShow extends Show {
+class MusicalShow extends Show {
 
     Person musicAuthor; //автор музыки
     String librettoText; //текст либретто

@@ -25,11 +25,11 @@ public class Theatre {
         musicalShow.setActor(actor2);
 
         // Печатаем информацию о режиссере спектакля с описанием объекта класса. Метод toString() переопределен в
-        // классе Director
+        // классе Director и Person
         System.out.println("Обычный спектакль.");
-        System.out.println(musicalShow.director);
+        musicalShow.printDirector();
 
-        // Печатаем список актеров в спектакле. Метод toString() переопределен в классе Actor.
+        // Печатаем список актеров в спектакле. Метод toString() переопределен в классе Actor и Person.
         // В скобках указан рост актера.
         musicalShow.printActors();
 
@@ -39,7 +39,7 @@ public class Theatre {
         ballet.setActor(actor1);
         ballet.setActor(actor3);
         System.out.println('\n' + "Баллет.");
-        System.out.println(ballet.director);
+        ballet.printDirector();
         ballet.printActors();
         ballet.printLibretto(); // Печатаем либретто к баллету
 
@@ -49,12 +49,13 @@ public class Theatre {
         opera.setActor(actor2);
         opera.setActor(actor3);
         System.out.println('\n' + "Опера.");
-        System.out.println(opera.director);
+        opera.printDirector();
         opera.printActors();
         opera.printLibretto(); // Печатаем либретто к опере
 
         // Меняем актера "Лирова" в опере на другого актера
         System.out.println(" ");
+        System.out.println("Меняем актера Лирова в опере на другого актера");
         opera.changeActor(actor1, "Лирова");
         System.out.println("Теперь в опере актеры.");
         opera.printActors();
@@ -62,6 +63,7 @@ public class Theatre {
         // Меняем актера "Иванов" (такого актера не существует) на другого актера
         System.out.println(" ");
         ballet.changeActor(actor2, "Иванов");
+        System.out.println("В баллете актеры.");
         ballet.printActors();
 
     }
